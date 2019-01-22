@@ -295,4 +295,4 @@ import sys
 if len(sys.argv) > 1:
     train(int(sys.argv[1]))
 else:
-    train(10000)
+    train(80000)

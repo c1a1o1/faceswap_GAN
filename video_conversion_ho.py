@@ -3,7 +3,15 @@ from networks.faceswap_gan_model import FaceswapGANModel
 from converter.video_converter import VideoConverter
 from detector.face_detector import MTCNNFaceDetector
 import sys
-def conversion(video_path_A,video_path_B,output_video_path_B):
+def conversion(video_path_A,video_path_B):
+    if len(sys.argv)<=2:
+        output_video_path_A = "./Aout.mp4"
+        output_video_path_B = "./Bout.mp4"
+    elif len(sys.argv)==3:
+        output_video_path_A = sys.argv[3]
+    elif len(sys.argv)>=4:
+        output_video_path_A = sys.argv[3]
+        output_video_path_B = sys.argv[4]
 
     K.set_learning_phase(0)
 
@@ -48,13 +56,14 @@ def conversion(video_path_A,video_path_B,output_video_path_B):
         "direction": "BtoA",
     }
 
-    input_fn = video_path_A
+    input_fn = video_path_B
     output_fn = output_video_path_B
     duration = None
 
     vc.convert(input_fn=input_fn, output_fn=output_fn, options=options, duration=duration)
-    print("Video B Done")
 
+    #
+    # #options
     # options = {
     #     # ===== Fixed =====
     #     "use_smoothed_bbox": True,
@@ -69,8 +78,8 @@ def conversion(video_path_A,video_path_B,output_video_path_B):
     #     "detec_threshold": 0.7,
     #     "roi_coverage": 0.9,
     #     "enhance": 0.5,
-    #     "output_type": 3,
-    #     "direction": "BtoA",
+    #     "output_type": 1,
+    #     "direction": "AtoB",
     # }
     #
     # input_fn = video_path_A
@@ -78,9 +87,6 @@ def conversion(video_path_A,video_path_B,output_video_path_B):
     # duration = None
     #
     # vc.convert(input_fn=input_fn, output_fn=output_fn, options=options, duration=duration)
-    # print("Video A Done")
-    #C:\Users\kyu\Desktop\gan_repack#Bout.mp4
-conversion(sys.argv[1],sys.argv[2],sys.argv[3])
-# conversion("C:\\Users\\kyu\\Desktop\\Cox\\FaceSwap\\gan_repack\\kth2.mp4",
-#             "C:\\Users\\kyu\\Desktop\\Cox\\FaceSwap\\gan_repack\\newtest.mp4",
-#             "C:\\Apache24\\htdocs\\function\\results\\new_gan.mp4")
+
+# conversion(sys.argv[1],sys.argv[2])
+conversion("C:/Users/kyu/Desktop/1.mp4","C:/Users/kyu/Desktop/jenny.mp4")

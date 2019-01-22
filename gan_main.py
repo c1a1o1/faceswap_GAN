@@ -6,8 +6,7 @@ import time
 import sys
 
 def start(video_path_A,video_path_B,output_video_path_A,output_video_path_B):
-    #Video_A_Path = "siwanlove.mp4"
-    #Video_B_Path = "eunwoolove.mp4"
+
 
     #delete
     def remove_readonly(func, path, excinfo):
@@ -70,6 +69,6 @@ def start(video_path_A,video_path_B,output_video_path_A,output_video_path_B):
 
 
 if (len(sys.argv)<3):
-    start("kth2.mp4","newtest.mp4","AOut.mp4","BOut.mp4")
+    start("C:/Users/kyu/Desktop/1.mp4","C:/Users/kyu/Desktop/2.mp4","AOut.mp4","BOut.mp4")
 else :
     start(sys.argv[1],sys.argv[2],sys.argv[3],sys.argv[4])
